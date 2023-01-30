@@ -20,8 +20,9 @@ const Header = () => {
       <div className='flex items-center justify-center md:w-1/5'>
         {/* Logo */}
         <Link href='/'>
-          <div className='relative h-10 w-5 cursor-pointer opacity-75 transition hover:opacity-100'>
-            <Image src='https://rb.gy/vsvv2o' alt='' fill objectFit='contain' />
+          <div className='relative  cursor-pointer opacity-75 transition hover:opacity-100 n'>
+            Rover-Sushi
+            {/* <Image src='/../public/logo.png' alt='' fill objectFit='contain' /> */}
           </div>
         </Link>
       </div>
