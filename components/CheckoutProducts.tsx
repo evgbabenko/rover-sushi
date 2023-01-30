@@ -55,15 +55,8 @@ const CheckoutProducts = ({ items, id }: Props) => {
             </div>
             <p className='flex items-end gap-x-1 font-semibold'>
               {items.length}
-              <ChevronDownIcon className='h-6 w-6 text-blue-500' />
             </p>
           </div>
-
-          {/*           <p className='flex cursor-pointer items-center text-blue-500 hover:underline'>
-            {dialog.detailed}
-            <ChevronDownIcon className='h-4 w-4' />
-            
-          </p> */}
         </div>
         <div className='flex flex-col items-end justify-end space-y-4'>
           {
