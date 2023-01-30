@@ -1,3 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+  body{
+    @apply font-body text-[#232428];
+  }
+}
+
+@layer components {
+  .headerLink {
+    @apply cursor-pointer opacity-75 transition hover:opacity-100;
+  }
+  .headerIcon {
+    @apply cursor-pointer h-6 w-6 opacity-75 transition hover:opacity-100
+  }
+  .link{
+    @apply cursor-pointer relative text-lg font-medium before:absolute before:inset-x-0 before:-bottom-1.5 before:h-0.5 before:origin-left before:scale-x-0 before:transform before:rounded-bl before:bg-black before:transition-all before:duration-300 hover:before:scale-x-100;
+  }
+  .broderGradient{
+    text-align: center;
+    padding-bottom: 5px;
+    background: linear-gradient(to right, #eecc44, #631beb) left bottom no-repeat;
+    background-size: 100% 2px;
+  }
+  .tabPanel{
+    @apply grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3;
+  }
+  .saleprice{
+    @apply text-sm text-[red] line-through mr-3;
+  }
+
+  .statusChecked {
+    @apply border-green-600 text-green-600 bg-gray-200;
+  }
+}
