@@ -58,20 +58,17 @@ const CheckoutProducts = ({ items, id }: Props) => {
           </div>
         </div>
         <div className='flex flex-col items-end justify-end space-y-4'>
-          {
-            items[0].sale ?
-              <h4 className='text-lg font-semibold'>
-            {Currency(
-              items.reduce(
-                (total, item) =>
-                  total + item.price,
-                0
-              ),
-              defaultCurrency
-            )}
-          </h4>: ''
-          }
-          
+          {items[0].sale ? (
+            <h4 className='saleprice'>
+              {Currency(
+                items.reduce((total, item) => total + item.price, 0),
+                defaultCurrency
+              )}
+            </h4>
+          ) : (
+            ''
+          )}
+
           <h4 className='text-lg font-semibold'>
             {Currency(
               items.reduce(

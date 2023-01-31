@@ -56,7 +56,7 @@ const Product = ({ product }: Props) => {
           <p>{product.title}</p>
           <div>
             {product.sale ? (
-              <div className='flex flex-row items-center'>
+              <div className='flex flex-row items-center space-x-3'>
                 <div className='saleprice'>
                   {Currency(product.price, defaultCurrency)}
                 </div>
