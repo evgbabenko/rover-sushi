@@ -16,7 +16,6 @@ interface Props {
 }
 
 const CheckoutProducts = ({ items, id }: Props) => {
-  const [showDetails, setShowDetails] = useState(false);
   const dispatch = useDispatch();
 
   const removeItemFromBasket = () => {

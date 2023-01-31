@@ -48,12 +48,14 @@ interface Product {
   price: number;
   sale: boolean;
   salePrice: number;
-  weight: number;
+  weight: string;
   slug: {
     _type: 'product';
     current: string;
   };
   description: string;
+  spaicy: boolean;
+  vegan: boolean;
   category: {
     _type: 'reference';
     _ref: string;

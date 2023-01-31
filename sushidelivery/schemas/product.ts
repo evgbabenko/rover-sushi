@@ -53,7 +53,17 @@ export default {
     {
       name: 'weight',
       title: 'Weight',
-      type: 'number',
+      type: 'string',
+    },
+    {
+      name: 'spaicy',
+      title: 'Spaicy',
+      type: 'boolean',
+    },
+    {
+      name: 'vegan',
+      title: 'Vegan',
+      type: 'boolean',
     },
     {
       name: 'description',

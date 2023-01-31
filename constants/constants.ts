@@ -21,6 +21,8 @@ export const dialog = {
   delivery: 'Доставка',
   total: 'Всього',
   continueShopping: 'Продовжити покупку',
+  spaicy: 'Гострі страви',
+  vegan: 'Вегетаріанські страви',
 };
 
 export const order_status = {

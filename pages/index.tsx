@@ -20,7 +20,7 @@ interface Props {
 const Home = ({ categories, products }: Props) => {
   const showProducts = (category: number) => {
     return products
-      .filter((product) => product.category._ref === categories[category]._id)
+      .filter((product) => product.category?._ref === categories[category]._id)
       .map((product) => <Product product={product} key={product._id} />);
     //filter products by category
   };
@@ -63,6 +63,7 @@ const Home = ({ categories, products }: Props) => {
                     </Tab>
                   ))}
               </Tab.List>
+
               <Tab.Panels className='mx-auto max-w-fit pt-10 pb-24 px-4'>
                 {/* show products */}
                 {categories.map((item, index) => (
