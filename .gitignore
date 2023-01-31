@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /sushidelivery/node_modules
+/public/rolls
 
 # testing
 /coverage
