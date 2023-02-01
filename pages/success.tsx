@@ -2,20 +2,31 @@ import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Link from 'next/link';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon, ShoppingCartIcon } from '@heroicons/react/outline';
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ShoppingCartIcon,
+} from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
-import { defaultCurrency, deliveryCost, dialog, freeDelivery, order_status } from '../constants/constants';
+import {
+  defaultCurrency,
+  deliveryCost,
+  dialog,
+  freeDelivery,
+  order_status,
+} from '../constants/constants';
 import Button from '../components/Button';
 import { useMediaQuery } from 'react-responsive';
 import { Currency } from '../utils/currencyFormatter';
 import { GetServerSideProps } from 'next';
 import { StripeProduct } from '../typings';
-import {fetchLineItems} from '../utils/fetchLineItems'
+import { fetchLineItems } from '../utils/fetchLineItems';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 
-interface Props{
-  products: StripeProduct[],
+interface Props {
+  products: StripeProduct[];
 }
 
 const Success = ({ products }: Props) => {
@@ -24,27 +35,22 @@ const Success = ({ products }: Props) => {
   const { session_id } = router.query;
   const [mounted, setMounted] = useState(false);
   const [showOrderSummary, setShowOrderSummary] = useState(false);
-   const subTotal = products.reduce(
-    (acc, product) => acc + product.price.unit_amount / 100, 0
-    
-  ) 
+  const subTotal = products.reduce(
+    (acc, product) => acc + product.price.unit_amount / 100,
+    0
+  );
 
   useEffect(() => {
     setMounted(true);
-  })
+  });
 
   //showOrderSummary always true for desctop but only conditionally true for mobule
   const isTableOrMobile = useMediaQuery({ query: '(max-width: 1024px)' });
-  const showSummary = isTableOrMobile ?
-    showOrderSummary
-    : true;
-  
+  const showSummary = isTableOrMobile ? showOrderSummary : true;
+
   const handleShowOrderSummary = () => {
-    setShowOrderSummary(!showOrderSummary)
-  }
-
-console.log(products)
-
+    setShowOrderSummary(!showOrderSummary);
+  };
   return (
     <div className='mx-auto '>
       <Head>
@@ -54,7 +60,7 @@ console.log(products)
       <Header />
 
       <main className='grid grid-cols-1 lg:grid-cols-9'>
-        <section className='order-2 lg:col-span-5 mx-auto max-w-xl p-2 lg:mx-0 lg:max-w-none lg:pr-16 lg:pt-16 xl:pl-16 2xl:pl-14'>
+        <section className='order-2 mx-auto max-w-xl p-2 lg:col-span-5 lg:mx-0 lg:max-w-none lg:pr-16 lg:pt-16 xl:pl-16 2xl:pl-14'>
           <Link href=''></Link>
 
           <div className='my-8 flex space-x-4 lg:ml-14 xl:ml-0'>
@@ -67,7 +73,7 @@ console.log(products)
               </p>
               <h4 className='text-lg'>
                 {dialog.thanks}{' '}
-                {session ? session.user?.name?.split(' ')[0] : 'Guest'} 
+                {session ? session.user?.name?.split(' ')[0] : 'Guest'}
               </h4>
             </div>
           </div>
@@ -158,7 +164,7 @@ console.log(products)
             </div>
 
             {showSummary && (
-              <div className='mx-auto max-w-xl devide-y border-gray-300 px-4 py-4 lg:mx-0 lg:max-w-lg lg:px-10 lg:py-16'>
+              <div className='devide-y mx-auto max-w-xl border-gray-300 px-4 py-4 lg:mx-0 lg:max-w-lg lg:px-10 lg:py-16'>
                 <div className='space-y-4 pb-4'>
                   {products.map((product) => (
                     <div
@@ -205,15 +211,14 @@ console.log(products)
                     </p>
                   </div>
                 </div>
-                  <div className='flex justify-between text-sm pt-4'>
-                    <p className='text-black'>{dialog.total}</p>
-                    <p className='font-medium text-black'>
-                      {Currency(
-                        subTotal + (subTotal < freeDelivery ? deliveryCost : 0),
-                        defaultCurrency
-                      )}
-                    </p>
-                  
+                <div className='flex justify-between pt-4 text-sm'>
+                  <p className='text-black'>{dialog.total}</p>
+                  <p className='font-medium text-black'>
+                    {Currency(
+                      subTotal + (subTotal < freeDelivery ? deliveryCost : 0),
+                      defaultCurrency
+                    )}
+                  </p>
                 </div>
               </div>
             )}
@@ -226,7 +231,9 @@ console.log(products)
 
 export default Success;
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({query}) => {
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  query,
+}) => {
   const sessionId = query.session_id as string;
   const products = await fetchLineItems(sessionId);
   
@@ -234,5 +241,5 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({query}) => 
     props: {
       products,
     },
-  }
-}
+  };
+};

@@ -1,37 +1,36 @@
-import {defineField, defineType} from 'sanity'
 import {MdPerson as icon} from 'react-icons/md'
 
-export default defineType({
-  name: 'users',
+export default {
+  name: 'user',
   title: 'Users',
   type: 'document',
   icon,
   fields: [
-    defineField({
+    {
       name: 'name',
       title: 'Name',
       type: 'string',
       description: 'Please use "Firstname Lastname" format',
-    }),
-    defineField({
+    },
+    {
       name: 'city',
       title: 'City',
       type: 'string',
       description: 'Please enter city',
-    }),
-    defineField({
+    },
+    {
       name: 'address',
       title: 'Address',
       type: 'string',
       description: 'Please enter address',
-    }),
-    defineField({
+    },
+    {
       name: 'phone',
       title: 'Phone',
       type: 'string',
       description: 'Please enter phone',
-    }),
-    defineField({
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -39,17 +38,17 @@ export default defineType({
         source: 'name',
         maxLength: 100,
       },
-    }),
-    defineField({
+    },
+    {
       name: 'image',
       title: 'Image',
-      type: 'image',
+      type: 'string',
       options: {
         hotspot: true,
       },
-    }),
+    },
   ],
   preview: {
     select: {title: 'name', media: 'image'},
   },
-})
+}

@@ -42,7 +42,7 @@ const Checkout = () => {
 
     //Internal server error
     if ((checkoutSession as any).statusCode === 500) {
-      console.error((checkoutSession as any).message)
+      console.error((checkoutSession as any).message);
       return;
     }
 
@@ -52,7 +52,7 @@ const Checkout = () => {
       sessionId: checkoutSession.id,
       //Make the field from the Checkout Session creation API response
       //available to this file, so you can provide it as parameter here
-      //instead of the {{CHECKOUT_SESSION_ID}} placeholder 
+      //instead of the {{CHECKOUT_SESSION_ID}} placeholder
     });
 
     console.warn(error.message);
@@ -131,10 +131,12 @@ const Checkout = () => {
                 </div>
                 {/* end tital */}
               </div>
+              {/* address */}
+
+
               {/* payment section */}
               <div className='my-14 space-y-4'>
                 <h4 className='text-xl font-semibold'>Варіанти оплати:</h4>
-
                 <div className='flex flex-col gap-4 md:flex-row'>
                   {/* payment card */}
                   <div className='order-2 flex flex-1 flex-col items-center rounded-xl bg-gray-200 p-8 py-12 text-center'>
@@ -155,7 +157,7 @@ const Checkout = () => {
                       loading={loading}
                     />
                   </div>
-                  {/* payment card */}
+                  {/* payment coins */}
                   <div className='flex flex-1 flex-col items-center rounded-xl bg-gray-200 p-8 py-12 text-center md:order-2'>
                     <h4 className='mb-4 flex flex-col text-xl font-semibold'>
                       Оплата готівкою при отриманні
@@ -178,10 +180,6 @@ const Checkout = () => {
             </div>
           </div>
         )}
-
-        {/*  */}
-
-        {/*  */}
       </main>
     </div>
   );

@@ -24,10 +24,6 @@ const CheckoutProducts = ({ items, id }: Props) => {
     {
       CustomToast(items[0], 'remove');
     }
-
-    /*     toast.error(`${items[0].title} видалено з замолвлення`, {
-      position: 'bottom-center',
-    }); */
   };
 
   return (

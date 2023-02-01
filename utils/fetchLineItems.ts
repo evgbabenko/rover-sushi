@@ -7,6 +7,5 @@ export const fetchLineItems = async (sessionId: string) => {
   if (!res.ok) return;
   const data = await res.json();
   const products = data.session.data;
-
   return products;
 };
